@@ -1,0 +1,37 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+# Rider / VS Code
+.idea/
+.vscode/
+# .NET / NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+artifacts/
+# Logs
+*.log
+# OS files
+.DS_Store
+Thumbs.db
+# EF local DB files (если не хочешь хранить локальную БД в git)
+*.db
+*.db-shm
+*.db-wal
