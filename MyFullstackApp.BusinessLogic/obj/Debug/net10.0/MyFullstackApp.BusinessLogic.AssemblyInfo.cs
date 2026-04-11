@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyFullstackApp.BusinessLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+140f854e6005e0bd91ab9af713b9d47f64cf1556")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6fe3cc4b94d2f04778d6d86edfc7ff39b476013")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyFullstackApp.BusinessLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyFullstackApp.BusinessLogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
