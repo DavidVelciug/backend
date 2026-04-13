@@ -1,39 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {}
+    "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
+    "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
         "projectName": "MyFullstackApp.DataAccess",
-        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Dimazzz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\saile\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dimazzz\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
+              "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
+                "projectPath": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
               }
             }
           }
@@ -48,7 +42,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -81,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -359,28 +353,22 @@
         }
       }
     },
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
+    "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
+        "projectUniqueName": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
         "projectName": "MyFullstackApp.Domains",
-        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
-        "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\obj\\",
+        "projectPath": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
+        "packagesPath": "C:\\Users\\Dimazzz\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dimazzz\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\saile\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Dimazzz\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -399,7 +387,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
@@ -420,7 +408,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
