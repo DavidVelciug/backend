@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyApi.Filters;
 using MyFullstackApp.BusinessLogic;
 using MyFullstackApp.BusinessLogic.Interface;
 using MyFullstackApp.Domains.Models.Product;
@@ -7,6 +8,7 @@ namespace MyApi.Controller;
 
 [Route("api/product")]
 [ApiController]
+[RoleAccess(AppRoles.Guest, AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
 public class ProductController : ControllerBase
 {
     private readonly IProduct _product;
@@ -36,6 +38,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Create([FromBody] ProductDto product)
     {
         var status = _product.ResponceProductCreateAction(product);
@@ -43,6 +46,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Update([FromBody] ProductDto product)
     {
         var status = _product.ResponceProductUpdateAction(product);
@@ -50,6 +54,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete("id")]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Delete(int id)
     {
         var status = _product.ResponceProductDeleteAction(id);
