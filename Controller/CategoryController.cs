@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyApi.Filters;
 using MyFullstackApp.BusinessLogic;
 using MyFullstackApp.BusinessLogic.Interface;
 using MyFullstackApp.Domains.Models.Category;
@@ -7,6 +8,7 @@ namespace MyApi.Controller;
 
 [Route("api/category")]
 [ApiController]
+[RoleAccess(AppRoles.Guest, AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
 public class CategoryController : ControllerBase
 {
     private readonly ICategory _category;
@@ -36,6 +38,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Create([FromBody] CategoryDto category)
     {
         var status = _category.ResponceCategoryCreateAction(category);
@@ -43,6 +46,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Update([FromBody] CategoryDto category)
     {
         var status = _category.ResponceCategoryUpdateAction(category);
@@ -50,6 +54,7 @@ public class CategoryController : ControllerBase
     }
 
     [HttpDelete("id")]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Delete(int id)
     {
         var status = _category.ResponceCategoryDeleteAction(id);
