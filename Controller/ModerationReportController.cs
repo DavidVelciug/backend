@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyApi.Filters;
 using MyFullstackApp.BusinessLogic;
 using MyFullstackApp.BusinessLogic.Interface;
 using MyFullstackApp.Domains.Models.Moderation;
@@ -7,6 +8,8 @@ namespace MyApi.Controller;
 
 [Route("api/moderationreport")]
 [ApiController]
+[AdminMod]
+[RoleAccess(AppRoles.Moderator, AppRoles.Admin)]
 public class ModerationReportController : ControllerBase
 {
     private readonly IModerationReport _reports;
