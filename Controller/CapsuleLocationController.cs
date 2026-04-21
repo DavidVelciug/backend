@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MyApi.Filters;
 using MyFullstackApp.BusinessLogic;
 using MyFullstackApp.BusinessLogic.Interface;
 using MyFullstackApp.Domains.Models.Capsule;
@@ -7,6 +8,7 @@ namespace MyApi.Controller;
 
 [Route("api/capsulelocation")]
 [ApiController]
+[RoleAccess(AppRoles.Guest, AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
 public class CapsuleLocationController : ControllerBase
 {
     private readonly ICapsuleLocation _locations;
@@ -37,18 +39,21 @@ public class CapsuleLocationController : ControllerBase
     }
 
     [HttpPost]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Create([FromBody] CapsuleLocationDto location)
     {
         return Ok(_locations.ResponceCapsuleLocationCreateAction(location));
     }
 
     [HttpPut]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Update([FromBody] CapsuleLocationDto location)
     {
         return Ok(_locations.ResponceCapsuleLocationUpdateAction(location));
     }
 
     [HttpDelete("id")]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Delete(int id)
     {
         return Ok(_locations.ResponceCapsuleLocationDeleteAction(id));
