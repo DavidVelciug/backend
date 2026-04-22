@@ -19,19 +19,69 @@ public class UserAction
     protected List<UserAccountDto> ExecuteGetAllUserAccountsAction()
     {
         using var db = new AppDbContext();
-        return Mapper.Map<List<UserAccountDto>>(db.UserAccounts.ToList());
+        return Mapper.Map<List<UserAccountDto>>(db.UserAccounts.ToList())
+            .Select(u =>
+            {
+                u.Password = string.Empty;
+                return u;
+            })
+            .ToList();
     }
 
     protected UserAccountDto? GetUserAccountDataByIdAction(int id)
     {
         using var db = new AppDbContext();
         var u = db.UserAccounts.FirstOrDefault(x => x.Id == id);
-        return u == null ? null : Mapper.Map<UserAccountDto>(u);
+        if (u == null)
+        {
+            return null;
+        }
+
+        var dto = Mapper.Map<UserAccountDto>(u);
+        dto.Password = string.Empty;
+        return dto;
+    }
+
+    protected UserLoginResultDto ExecuteLoginUserAction(UserLoginRequestDto request)
+    {
+        using var db = new AppDbContext();
+
+        var email = request.Email.Trim().ToLowerInvariant();
+        var role = request.Role.Trim().ToLowerInvariant();
+
+        var user = db.UserAccounts.FirstOrDefault(x =>
+            x.Email.ToLower() == email &&
+            x.Password == request.Password &&
+            x.Role.ToLower() == role);
+
+        if (user == null)
+        {
+            return new UserLoginResultDto
+            {
+                IsSuccess = false,
+                Message = "Пользователь с такими email, паролем и ролью не найден.",
+                Role = "guest"
+            };
+        }
+
+        return new UserLoginResultDto
+        {
+            IsSuccess = true,
+            Message = "Вход выполнен успешно.",
+            UserId = user.Id,
+            Role = user.Role,
+            DisplayName = user.DisplayName
+        };
     }
 
     protected ResponceMsg ExecuteUserAccountCreateAction(UserAccountDto user)
     {
         using var db = new AppDbContext();
+        if (string.IsNullOrWhiteSpace(user.Password))
+        {
+            return new ResponceMsg { IsSuccess = false, Message = "Password is required." };
+        }
+
         if (db.UserAccounts.Any(x => x.Email.Equals(user.Email)))
         {
             return new ResponceMsg { IsSuccess = false, Message = "User with this email already exists." };
@@ -39,6 +89,7 @@ public class UserAction
 
         var entity = Mapper.Map<UserAccountData>(user);
         entity.Id = 0;
+        entity.Role = string.IsNullOrWhiteSpace(user.Role) ? "user" : user.Role.Trim().ToLowerInvariant();
         entity.CreatedAtUtc = DateTime.UtcNow;
         entity.Capsules = new List<TimeCapsuleData>();
 
@@ -65,6 +116,8 @@ public class UserAction
 
         data.Email = user.Email;
         data.DisplayName = user.DisplayName;
+        data.Role = string.IsNullOrWhiteSpace(user.Role) ? data.Role : user.Role.Trim().ToLowerInvariant();
+        data.Password = string.IsNullOrWhiteSpace(user.Password) ? data.Password : user.Password;
         data.NotifyEmailEnabled = user.NotifyEmailEnabled;
         data.NotifyPushEnabled = user.NotifyPushEnabled;
         data.LoginAlertsEnabled = user.LoginAlertsEnabled;
