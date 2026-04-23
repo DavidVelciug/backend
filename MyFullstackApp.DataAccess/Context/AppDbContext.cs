@@ -18,6 +18,12 @@ public class AppDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        if (DbSession.Provider.Equals("sqlserver", StringComparison.OrdinalIgnoreCase))
+        {
+            optionsBuilder.UseSqlServer(DbSession.ConnectionStrings);
+            return;
+        }
+
         optionsBuilder.UseSqlite(DbSession.ConnectionStrings);
     }
 
