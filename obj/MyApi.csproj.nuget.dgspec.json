@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyApi.csproj": {}
+    "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyApi.csproj": {
+    "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyApi.csproj",
+        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyApi.csproj",
         "projectName": "MyApi",
-        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyApi.csproj",
+        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyApi.csproj",
         "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\obj\\",
+        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,14 +32,14 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj"
+              "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj"
               },
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj"
+              "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj"
               },
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
+              "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
+                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
               }
             }
           }
@@ -50,7 +50,7 @@
           ]
         },
         "restoreAuditProperties": {
-          "enableAudit": "true",
+          "enableAudit": "false",
           "auditLevel": "low",
           "auditMode": "all"
         },
@@ -63,6 +63,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[12.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[10.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -512,14 +516,14 @@
         }
       }
     },
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj": {
+    "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj",
         "projectName": "MyFullstackApp.BusinessLogic",
-        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj",
+        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.BusinessLogic\\MyFullstackApp.BusinessLogic.csproj",
         "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.BusinessLogic\\obj\\",
+        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -540,11 +544,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj"
+              "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj"
               },
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
+              "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
+                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
               }
             }
           }
@@ -555,7 +559,7 @@
           ]
         },
         "restoreAuditProperties": {
-          "enableAudit": "true",
+          "enableAudit": "false",
           "auditLevel": "low",
           "auditMode": "all"
         },
@@ -864,14 +868,14 @@
         }
       }
     },
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
+    "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
         "projectName": "MyFullstackApp.DataAccess",
-        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
+        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\MyFullstackApp.DataAccess.csproj",
         "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -892,8 +896,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
-                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
+              "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
+                "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj"
               }
             }
           }
@@ -904,7 +908,7 @@
           ]
         },
         "restoreAuditProperties": {
-          "enableAudit": "true",
+          "enableAudit": "false",
           "auditLevel": "low",
           "auditMode": "all"
         },
@@ -917,6 +921,10 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[10.0.0, )"
             },
@@ -1219,14 +1227,14 @@
         }
       }
     },
-    "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
+    "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
+        "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
         "projectName": "MyFullstackApp.Domains",
-        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
+        "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
         "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\obj\\",
+        "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1255,7 +1263,7 @@
           ]
         },
         "restoreAuditProperties": {
-          "enableAudit": "true",
+          "enableAudit": "false",
           "auditLevel": "low",
           "auditMode": "all"
         },

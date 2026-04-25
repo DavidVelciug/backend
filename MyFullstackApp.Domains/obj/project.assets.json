@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
+      "projectUniqueName": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
       "projectName": "MyFullstackApp.Domains",
-      "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
+      "projectPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\MyFullstackApp.Domains.csproj",
       "packagesPath": "C:\\Users\\saile\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\MemoryLane\\MyApi\\MyFullstackApp.Domains\\obj\\",
+      "outputPath": "C:\\Users\\saile\\OneDrive\\Desktop\\фыфы\\backend\\MyFullstackApp.Domains\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -47,7 +47,7 @@
         ]
       },
       "restoreAuditProperties": {
-        "enableAudit": "true",
+        "enableAudit": "false",
         "auditLevel": "low",
         "auditMode": "all"
       },

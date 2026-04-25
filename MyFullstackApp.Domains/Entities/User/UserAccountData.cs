@@ -17,6 +17,14 @@ public class UserAccountData
     [StringLength(120)]
     public string DisplayName { get; set; } = string.Empty;
 
+    [Required]
+    [StringLength(50)]
+    public string Role { get; set; } = "user";
+
+    [Required]
+    [StringLength(200)]
+    public string Password { get; set; } = string.Empty;
+
     public DateTime CreatedAtUtc { get; set; }
 
     public bool NotifyEmailEnabled { get; set; } = true;
