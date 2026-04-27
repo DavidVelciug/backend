@@ -47,19 +47,17 @@ public class UserAction
         using var db = new AppDbContext();
 
         var email = request.Email.Trim().ToLowerInvariant();
-        var role = request.Role.Trim().ToLowerInvariant();
 
         var user = db.UserAccounts.FirstOrDefault(x =>
             x.Email.ToLower() == email &&
-            x.Password == request.Password &&
-            x.Role.ToLower() == role);
+            x.Password == request.Password);
 
         if (user == null)
         {
             return new UserLoginResultDto
             {
                 IsSuccess = false,
-                Message = "Пользователь с такими email, паролем и ролью не найден.",
+                Message = "Пользователь с такими email и паролем не найден.",
                 Role = "guest"
             };
         }
@@ -89,7 +87,7 @@ public class UserAction
 
         var entity = Mapper.Map<UserAccountData>(user);
         entity.Id = 0;
-        entity.Role = string.IsNullOrWhiteSpace(user.Role) ? "user" : user.Role.Trim().ToLowerInvariant();
+        entity.Role = "user";
         entity.CreatedAtUtc = DateTime.UtcNow;
         entity.Capsules = new List<TimeCapsuleData>();
 
