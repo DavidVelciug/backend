@@ -8,7 +8,6 @@ namespace MyApi.Controller;
 
 [Route("api/user")]
 [ApiController]
-// Добавили AppRoles.Guest, чтобы анонимы могли "зайти" в контроллер для регистрации и логина
 [RoleAccess(AppRoles.Guest, AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
 public class UserAccountController : ControllerBase
 {
@@ -20,7 +19,6 @@ public class UserAccountController : ControllerBase
     }
 
     [HttpGet("getAll")]
-    // Здесь Guest лучше убрать, чтобы только админы видели всех
     [RoleAccess(AppRoles.Admin, AppRoles.Moderator)]
     public IActionResult GetAll()
     {

@@ -8,8 +8,6 @@ namespace MyApi.Controller;
 
 [Route("api/moderationreport")]
 [ApiController]
-[AdminMod]
-[RoleAccess(AppRoles.Moderator, AppRoles.Admin)]
 public class ModerationReportController : ControllerBase
 {
     private readonly IModerationReport _reports;
@@ -20,12 +18,16 @@ public class ModerationReportController : ControllerBase
     }
 
     [HttpGet("getAll")]
+    [AdminMod]
+    [RoleAccess(AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult GetAll()
     {
         return Ok(_reports.GetAllModerationReportsAction());
     }
 
     [HttpGet("id")]
+    [AdminMod]
+    [RoleAccess(AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Get(int id)
     {
         var r = _reports.GetModerationReportByIdAction(id);
@@ -33,18 +35,23 @@ public class ModerationReportController : ControllerBase
     }
 
     [HttpPost]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Create([FromBody] ModerationReportDto report)
     {
         return Ok(_reports.ResponceModerationReportCreateAction(report));
     }
 
     [HttpPut]
+    [AdminMod]
+    [RoleAccess(AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Update([FromBody] ModerationReportDto report)
     {
         return Ok(_reports.ResponceModerationReportUpdateAction(report));
     }
 
     [HttpDelete("id")]
+    [AdminMod]
+    [RoleAccess(AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult Delete(int id)
     {
         return Ok(_reports.ResponceModerationReportDeleteAction(id));

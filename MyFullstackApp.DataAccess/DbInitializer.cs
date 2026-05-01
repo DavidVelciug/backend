@@ -21,6 +21,47 @@ public static class DbInitializer
         {
             SeedUsersCapsulesAndReports(db);
         }
+
+        EnsureAdminAccounts(db);
+    }
+
+    private static void EnsureAdminAccounts(AppDbContext db)
+    {
+        EnsureAdmin(
+            db,
+            "admin.one@memorylane.com",
+            "Главный админ",
+            "AdminOne123!");
+        EnsureAdmin(
+            db,
+            "admin.two@memorylane.com",
+            "Резервный админ",
+            "AdminTwo123!");
+        db.SaveChanges();
+    }
+
+    private static void EnsureAdmin(AppDbContext db, string email, string displayName, string password)
+    {
+        var existing = db.UserAccounts.FirstOrDefault(x => x.Email == email);
+        if (existing == null)
+        {
+            db.UserAccounts.Add(new UserAccountData
+            {
+                Email = email,
+                DisplayName = displayName,
+                Role = "admin",
+                Password = password,
+                CreatedAtUtc = DateTime.UtcNow,
+                NotifyEmailEnabled = true,
+                NotifyPushEnabled = true,
+                LoginAlertsEnabled = true
+            });
+            return;
+        }
+
+        existing.Role = "admin";
+        existing.Password = password;
+        existing.DisplayName = displayName;
     }
 
     private static void SeedCatalog(AppDbContext db)
@@ -108,30 +149,7 @@ public static class DbInitializer
             NotifyPushEnabled = false,
             LoginAlertsEnabled = true
         };
-        var u3 = new UserAccountData
-        {
-            Email = "admin.one@memorylane.com",
-            DisplayName = "Главный админ",
-            Role = "admin",
-            Password = "AdminOne123!",
-            CreatedAtUtc = DateTime.UtcNow.AddDays(-7),
-            NotifyEmailEnabled = false,
-            NotifyPushEnabled = true,
-            LoginAlertsEnabled = false
-        };
-        var u4 = new UserAccountData
-        {
-            Email = "admin.two@memorylane.com",
-            DisplayName = "Резервный админ",
-            Role = "admin",
-            Password = "AdminTwo123!",
-            CreatedAtUtc = DateTime.UtcNow.AddDays(-3),
-            NotifyEmailEnabled = true,
-            NotifyPushEnabled = true,
-            LoginAlertsEnabled = true
-        };
-
-        db.UserAccounts.AddRange(u1, u2, u3, u4);
+        db.UserAccounts.AddRange(u1, u2);
         db.SaveChanges();
 
         var now = DateTime.UtcNow;

@@ -31,6 +31,14 @@ public class TimeCapsuleController : ControllerBase
         return c == null ? NotFound() : Ok(c);
     }
 
+    [HttpGet("idForUser")]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
+    public IActionResult GetForUser(int id, int viewerUserId)
+    {
+        var c = _capsules.GetTimeCapsuleByIdForUserAction(id, viewerUserId);
+        return c == null ? NotFound() : Ok(c);
+    }
+
     [HttpGet("getByOwner")]
     [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
     public IActionResult GetByOwner(int ownerUserId)
@@ -42,6 +50,13 @@ public class TimeCapsuleController : ControllerBase
     public IActionResult GetPublicFeed()
     {
         return Ok(_capsules.GetPublicFeedAction());
+    }
+
+    [HttpGet("getOpenedForUser")]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
+    public IActionResult GetOpenedForUser(int userId)
+    {
+        return Ok(_capsules.GetOpenedCapsulesForUserAction(userId));
     }
 
     [HttpPost]
@@ -63,5 +78,12 @@ public class TimeCapsuleController : ControllerBase
     public IActionResult Delete(int id)
     {
         return Ok(_capsules.ResponceTimeCapsuleDeleteAction(id));
+    }
+
+    [HttpDelete("owner")]
+    [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
+    public IActionResult DeleteByOwner(int id, int ownerUserId)
+    {
+        return Ok(_capsules.ResponceTimeCapsuleDeleteByOwnerAction(id, ownerUserId));
     }
 }
