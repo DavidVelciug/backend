@@ -13,9 +13,13 @@ public class TimeCapsuleFlow : TimeCapsuleAction, ITimeCapsule
     public List<TimeCapsuleDto> GetAllTimeCapsulesAction() => ExecuteGetAllTimeCapsulesAction();
 
     public TimeCapsuleDto? GetTimeCapsuleByIdAction(int id) => GetTimeCapsuleDataByIdAction(id);
+    public TimeCapsuleDto? GetTimeCapsuleByIdForUserAction(int id, int viewerUserId) =>
+        GetTimeCapsuleDataByIdForUserAction(id, viewerUserId);
 
     public List<TimeCapsuleDto> GetTimeCapsulesByOwnerAction(int ownerUserId) =>
         ExecuteGetTimeCapsulesByOwnerAction(ownerUserId);
+    public List<TimeCapsuleDto> GetOpenedCapsulesForUserAction(int userId) =>
+        ExecuteGetOpenedCapsulesForUserAction(userId);
 
     public List<TimeCapsuleDto> GetPublicFeedAction() => ExecuteGetPublicFeedAction();
 
@@ -26,4 +30,6 @@ public class TimeCapsuleFlow : TimeCapsuleAction, ITimeCapsule
         ExecuteTimeCapsuleUpdateAction(capsule);
 
     public ResponceMsg ResponceTimeCapsuleDeleteAction(int id) => ExecuteTimeCapsuleDeleteAction(id);
+    public ResponceMsg ResponceTimeCapsuleDeleteByOwnerAction(int id, int ownerUserId) =>
+        ExecuteTimeCapsuleDeleteByOwnerAction(id, ownerUserId);
 }

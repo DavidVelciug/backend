@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using MyFullstackApp.BusinessLogic.Core.Common;
 using MyFullstackApp.DataAccess.Context;
 using MyFullstackApp.Domains.Entities.Capsule;
 using MyFullstackApp.Domains.Entities.Moderation;
@@ -46,6 +47,41 @@ public class TimeCapsuleAction
         return c == null ? null : MapCapsule(c);
     }
 
+    protected TimeCapsuleDto? GetTimeCapsuleDataByIdForUserAction(int id, int viewerUserId)
+    {
+        using var db = new AppDbContext();
+        var capsule = db.TimeCapsules.Include(x => x.Owner).FirstOrDefault(x => x.Id == id);
+        if (capsule == null)
+        {
+            return null;
+        }
+
+        var viewer = db.UserAccounts.FirstOrDefault(u => u.Id == viewerUserId);
+        if (viewer == null)
+        {
+            return null;
+        }
+
+        var now = DateTime.UtcNow;
+        var isOwner = capsule.OwnerUserId == viewerUserId;
+        var isRecipient = string.Equals(capsule.RecipientEmail, viewer.Email, StringComparison.OrdinalIgnoreCase);
+        var canView = isOwner || capsule.IsPublic || isRecipient;
+        if (!canView)
+        {
+            return null;
+        }
+
+        var dto = MapCapsule(capsule);
+        if (capsule.OpenAtUtc > now && !isOwner)
+        {
+            dto.IsLocked = true;
+            dto.TextContent = null;
+            dto.LinkUrl = null;
+            dto.FileStoragePath = null;
+        }
+        return dto;
+    }
+
     protected List<TimeCapsuleDto> ExecuteGetTimeCapsulesByOwnerAction(int ownerUserId)
     {
         using var db = new AppDbContext();
@@ -67,6 +103,33 @@ public class TimeCapsuleAction
             .Where(c => c.IsPublic && c.OpenAtUtc <= now)
             .OrderByDescending(c => c.OpenAtUtc)
             .AsEnumerable()
+            .Select(c =>
+            {
+                var dto = MapCapsule(c);
+                dto.TextContent = null;
+                dto.LinkUrl = null;
+                return dto;
+            })
+            .ToList();
+    }
+
+    protected List<TimeCapsuleDto> ExecuteGetOpenedCapsulesForUserAction(int userId)
+    {
+        using var db = new AppDbContext();
+        var user = db.UserAccounts.FirstOrDefault(x => x.Id == userId);
+        if (user == null)
+        {
+            return new List<TimeCapsuleDto>();
+        }
+
+        var now = DateTime.UtcNow;
+        return db.TimeCapsules
+            .Include(c => c.Owner)
+            .Where(c =>
+                c.OpenAtUtc <= now &&
+                (c.OwnerUserId == userId || c.IsPublic || c.RecipientEmail.ToLower() == user.Email.ToLower()))
+            .OrderByDescending(c => c.OpenAtUtc)
+            .AsEnumerable()
             .Select(MapCapsule)
             .ToList();
     }
@@ -75,6 +138,14 @@ public class TimeCapsuleAction
     {
         var dto = Mapper.Map<TimeCapsuleDto>(c);
         dto.OwnerDisplayName = c.Owner?.DisplayName;
+        dto.PreviewText = c.ContentType switch
+        {
+            CapsuleContentType.Text => "Текстовая капсула",
+            CapsuleContentType.Link => "Капсула со ссылкой",
+            CapsuleContentType.File => "Капсула с файлом",
+            _ => "Капсула"
+        };
+        dto.IsLocked = c.OpenAtUtc > DateTime.UtcNow;
         return dto;
     }
 
@@ -98,6 +169,7 @@ public class TimeCapsuleAction
         entity.Owner = null!;
         entity.Location = null;
         entity.Reports = new List<ModerationReportData>();
+        entity.FileStoragePath = ImageStorage.SaveDataUrlIfNeeded(entity.FileStoragePath, "capsules");
 
         db.TimeCapsules.Add(entity);
         db.SaveChanges();
@@ -130,7 +202,7 @@ public class TimeCapsuleAction
         data.Title = capsule.Title;
         data.TextContent = capsule.TextContent;
         data.LinkUrl = capsule.LinkUrl;
-        data.FileStoragePath = capsule.FileStoragePath;
+        data.FileStoragePath = ImageStorage.SaveDataUrlIfNeeded(capsule.FileStoragePath, "capsules");
         data.OpenAtUtc = capsule.OpenAtUtc;
         data.RecipientEmail = capsule.RecipientEmail;
         data.IsPublic = capsule.IsPublic;
@@ -152,6 +224,20 @@ public class TimeCapsuleAction
         db.TimeCapsules.Remove(data);
         db.SaveChanges();
 
+        return new ResponceMsg { IsSuccess = true, Message = "Capsule deleted successfully." };
+    }
+
+    protected ResponceMsg ExecuteTimeCapsuleDeleteByOwnerAction(int id, int ownerUserId)
+    {
+        using var db = new AppDbContext();
+        var data = db.TimeCapsules.FirstOrDefault(x => x.Id == id && x.OwnerUserId == ownerUserId);
+        if (data == null)
+        {
+            return new ResponceMsg { IsSuccess = false, Message = "Capsule not found for this owner." };
+        }
+
+        db.TimeCapsules.Remove(data);
+        db.SaveChanges();
         return new ResponceMsg { IsSuccess = true, Message = "Capsule deleted successfully." };
     }
 }
