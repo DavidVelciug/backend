@@ -25,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     }
 });
 
-// 3. Настройка аутентификации (чтобы работал механизм схем)
+// 3. Настройка аутентификации 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -64,6 +64,7 @@ InitializeDatabase(app);
 
 app.UseCors("DevCorsPolicy");
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 // ПОРЯДОК ВАЖЕН: Сначала КТО ты (Authn), потом ЧТО тебе можно (Authz)
 app.UseAuthentication(); 
@@ -72,8 +73,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-// --- Вспомогательные методы (должны быть в конце файла) ---
 
 static void InitializeDatabase(WebApplication app)
 {
