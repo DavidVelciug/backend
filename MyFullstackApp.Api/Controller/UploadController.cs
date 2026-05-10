@@ -9,17 +9,24 @@ namespace MyApi.Controller;
 [RoleAccess(AppRoles.User, AppRoles.Moderator, AppRoles.Admin)]
 public class UploadController : ControllerBase
 {
+    public sealed class UploadFileRequest
+    {
+        public IFormFile? File { get; set; }
+        public string? Folder { get; set; }
+    }
+
     [HttpPost("file")]
     [RequestSizeLimit(long.MaxValue)]
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
-    public IActionResult UploadFile([FromForm] IFormFile? file, [FromQuery] string? folder = null)
+    public IActionResult UploadFile([FromForm] UploadFileRequest request)
     {
+        var file = request.File;
         if (file == null || file.Length == 0)
         {
             return BadRequest(new { isSuccess = false, message = "Файл не передан." });
         }
 
-        var safeFolder = string.IsNullOrWhiteSpace(folder) ? "misc" : folder.Trim().ToLowerInvariant();
+        var safeFolder = string.IsNullOrWhiteSpace(request.Folder) ? "misc" : request.Folder.Trim().ToLowerInvariant();
         if (safeFolder.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 || safeFolder.Contains("..", StringComparison.Ordinal))
         {
             return BadRequest(new { isSuccess = false, message = "Некорректная папка загрузки." });

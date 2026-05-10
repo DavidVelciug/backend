@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using MyFullstackApp.BusinessLogic.Core.Common;
 using MyFullstackApp.DataAccess.Context;
 using MyFullstackApp.Domains.Entities.Product;
 using MyFullstackApp.Domains.Models.Base;
@@ -47,7 +48,7 @@ public class ProductAction
 
         pData.Name = product.Name;
         pData.Description = product.Description;
-        pData.Image = product.Image;
+        pData.Image = ImageStorage.SaveDataUrlIfNeeded(product.Image, "products");
         pData.Price = product.Price;
         pData.CategoryId = product.CategoryId;
 
@@ -93,6 +94,7 @@ public class ProductAction
         var entity = Mapper.Map<ProductData>(product);
         entity.Id = 0;
         entity.Category = null!;
+        entity.Image = ImageStorage.SaveDataUrlIfNeeded(entity.Image, "products");
 
         db.Products.Add(entity);
         db.SaveChanges();

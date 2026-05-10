@@ -18,6 +18,8 @@ public class TimeCapsuleFlow : TimeCapsuleAction, ITimeCapsule
 
     public List<TimeCapsuleDto> GetTimeCapsulesByOwnerAction(int ownerUserId) =>
         ExecuteGetTimeCapsulesByOwnerAction(ownerUserId);
+    public List<TimeCapsuleDto> GetTimeCapsulesByRecipientAction(int recipientUserId) =>
+        ExecuteGetTimeCapsulesByRecipientAction(recipientUserId);
     public List<TimeCapsuleDto> GetOpenedCapsulesForUserAction(int userId) =>
         ExecuteGetOpenedCapsulesForUserAction(userId);
 
