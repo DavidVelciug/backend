@@ -22,6 +22,8 @@ public class ProductData
     [StringLength(1000)]
     public string? Image { get; set; }
 
+    public int? CapsuleId { get; set; }
+
     public int CategoryId { get; set; }
     public CategoryData Category { get; set; } = null!;
 }
