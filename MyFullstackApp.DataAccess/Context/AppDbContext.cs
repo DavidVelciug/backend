@@ -50,6 +50,9 @@ public class AppDbContext : DbContext
             .WithMany(c => c.Products)
             .HasForeignKey(p => p.CategoryId)
             .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<ProductData>()
+            .Property(p => p.Price)
+            .HasPrecision(18, 2);
 
         modelBuilder.Entity<UserAccountData>()
             .HasIndex(u => u.Email)
