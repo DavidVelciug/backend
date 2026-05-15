@@ -1,9 +1,12 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using MyApi.Services;
 using MyFullstackApp.BusinessLogic.Mapping;
 using MyFullstackApp.DataAccess;
 using MyFullstackApp.DataAccess.Context;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,12 +28,34 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     }
 });
 
-// 3. Настройка аутентификации 
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(JwtOptions.SectionName));
+builder.Services.AddSingleton<JwtTokenService>();
+
+var jwtOpts = builder.Configuration.GetSection(JwtOptions.SectionName).Get<JwtOptions>()
+    ?? new JwtOptions();
+if (string.IsNullOrWhiteSpace(jwtOpts.Secret) || Encoding.UTF8.GetByteCount(jwtOpts.Secret) < 32)
+{
+    throw new InvalidOperationException("Jwt:Secret must be at least 32 bytes in appsettings.");
+}
+
+var jwtSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOpts.Secret));
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.RequireHttpsMetadata = false;
         options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = jwtSigningKey,
+            ValidIssuer = jwtOpts.Issuer,
+            ValidAudience = jwtOpts.Audience,
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.FromMinutes(1),
+            RoleClaimType = "role",
+            NameClaimType = JwtRegisteredClaimNames.Sub,
+        };
     });
 
 builder.Services.AddAuthorization();
